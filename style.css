@@ -108,6 +108,43 @@ form{
    box-shadow: 1px 1px 3px 0px #000000;
 }
 
+.all-pokemon-cont .poke-card.fire{ 
+    background-color:rgba(239, 77, 55, 0.88);
+}
+
+.all-pokemon-cont .poke-card.grass{ 
+    background-color:rgba(50, 188, 59, 0.754);
+}
+
+.all-pokemon-cont .poke-card.bug{ 
+    background-color:rgba(117, 253, 126, 0.356);
+}
+
+
+.all-pokemon-cont .poke-card.water{ 
+    background-color:rgba(58, 178, 233, 0.88);
+}
+
+.all-pokemon-cont .poke-card.normal{ 
+    background-color:rgba(239, 239, 240, 0.88);
+}
+
+.all-pokemon-cont .poke-card.ground{ 
+    background-color:rgba(203, 151, 86, 0.84);
+}
+
+.all-pokemon-cont .poke-card.electric{ 
+    background-color:rgba(255, 211, 67, 0.909);
+}
+
+.all-pokemon-cont .poke-card.psychic{ 
+    background-color:rgba(220, 37, 183, 0.782);
+}
+
+.all-pokemon-cont .poke-card.poison{ 
+    background-color:rgba(168, 27, 233, 0.782);
+}
+
 .poke-card img{
     width: 150px;
 

@@ -6,7 +6,6 @@ const allPokemonBtn = document.querySelector(".all-pokemon-btn");
 const showMoreBtn = document.querySelector(".more-pokemon");
 
 let pokemonList = 899;
- 
 
 function createHtml(data){
     const pokemonInfo = `<img src="${data.sprites.front_default}">
@@ -20,6 +19,43 @@ function createHtml(data){
         pokeCard.classList.add("poke-card")
         pokeCard.innerHTML = pokemonInfo;
         allPokemonCont.appendChild(pokeCard);
+
+     if(data.types[0].type.name === "fire"){
+        pokeCard.classList.add("fire")
+     }
+     
+     if(data.types[0].type.name === "grass"){
+         pokeCard.classList.add("grass")
+     }
+     
+     if(data.types[0].type.name === "bug" ){
+        pokeCard.classList.add("bug")
+    }
+
+     if(data.types[0].type.name === "water"){
+         pokeCard.classList.add("water")
+     }
+
+     if(data.types[0].type.name === "normal"){
+        pokeCard.classList.add("normal")
+    }
+
+    if(data.types[0].type.name === "ground"){
+        pokeCard.classList.add("ground")
+    }
+
+    if(data.types[0].type.name === "electric"){
+        pokeCard.classList.add("electric")
+    }
+
+    if(data.types[0].type.name === "psychic"){
+        pokeCard.classList.add("psychic")
+    }
+
+    if(data.types[0].type.name === "poison"){
+        pokeCard.classList.add("poison")
+    }
+
 }
 
  async function getPokemon(){ 
@@ -27,7 +63,6 @@ function createHtml(data){
      const dataFetch = await fetch(`https://pokeapi.co/api/v2/pokemon/${result}`)
      const data = await dataFetch.json();    
      createHtml(data);
-     
  }
 
  function clear(){
@@ -50,13 +85,7 @@ function createHtml(data){
 }
 
 
-
-
-
-showMoreBtn.addEventListener("click", (e)=>{
-  
-});
-
+//Event Listeners
 
 search.addEventListener("click", (e)=>{
     e.preventDefault();
