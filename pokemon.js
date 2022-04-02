@@ -4,6 +4,7 @@ const search = document.querySelector(".search");
 const allPokemonCont = document.querySelector(".all-pokemon-cont");
 const allPokemonBtn = document.querySelector(".all-pokemon-btn");
 const showMoreBtn = document.querySelector(".more-pokemon");
+const loading = document.querySelector(".loading-icon");
 
 let pokemonList = 899;
 
@@ -20,6 +21,7 @@ function createHtml(data){
         pokeCard.innerHTML = pokemonInfo;
         allPokemonCont.appendChild(pokeCard);
 
+    //Colors of the cards 
      if(data.types[0].type.name === "fire"){
         pokeCard.classList.add("fire")
      }
@@ -56,6 +58,42 @@ function createHtml(data){
         pokeCard.classList.add("poison")
     }
 
+    if(data.types[0].type.name === "dark"){
+        pokeCard.classList.add("dark")
+    }
+
+    if(data.types[0].type.name === "dragon"){
+        pokeCard.classList.add("dragon")
+    }
+
+    if(data.types[0].type.name === "ice"){
+        pokeCard.classList.add("ice")
+    }
+
+    if(data.types[0].type.name === "ghost"){
+        pokeCard.classList.add("ghost")
+    }
+
+    if(data.types[0].type.name === "fighting"){
+        pokeCard.classList.add("fighting");
+    }
+
+    if(data.types[0].type.name === "steel"){
+        pokeCard.classList.add("steel");
+    }
+
+    if(data.types[0].type.name === "fairy"){
+        pokeCard.classList.add("fairy");
+    }
+
+    if(data.types[0].type.name === "rock"){
+        pokeCard.classList.add("rock");
+    }
+
+    if(data.types[0].type.name === "flying"){
+        pokeCard.classList.add("flying");
+    }
+
 }
 
  async function getPokemon(){ 
@@ -71,7 +109,7 @@ function createHtml(data){
      input.value = "";
  }
 
- async function getPokemons(){
+ async function getAllPokemons(){
     const promises = [];
     for(let i = 1; i < pokemonList ; i++){
         promises.push(fetch(`https://pokeapi.co/api/v2/pokemon/${i}`).then((res) => res.json()))
@@ -82,7 +120,9 @@ function createHtml(data){
             createHtml(data);
         });
     })
+    loading.classList.remove("load");
 }
+
 
 
 //Event Listeners
@@ -95,8 +135,9 @@ search.addEventListener("click", (e)=>{
 
 allPokemonBtn.addEventListener("click", (e)=>{
     e.preventDefault();
-    clear()
-    getPokemons();
+    loading.classList.add("load");
+    getAllPokemons();
+    clear();
 });
 
 
