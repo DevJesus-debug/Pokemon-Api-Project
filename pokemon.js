@@ -5,94 +5,118 @@ const allPokemonCont = document.querySelector(".all-pokemon-cont");
 const allPokemonBtn = document.querySelector(".all-pokemon-btn");
 const showMoreBtn = document.querySelector(".more-pokemon");
 const loading = document.querySelector(".loading-icon");
+const myTeamCont = document.querySelector(".my-team-cont");
+const addTeamBtn = document.querySelector(".add-team-btn");
 
 let pokemonList = 899;
 
-function createHtml(data){
-    const pokemonInfo = `<img src="${data.sprites.front_default}">
-    <div class="name">
-    <div class="number">${data.id}.</div>
-         <h2>${data.name}</h2>
-    </div>
-     <div class="types">${data.types.map((type) => type.type.name)}</div>
-    ` 
-    const pokeCard = document.createElement("div");
-        pokeCard.classList.add("poke-card")
-        pokeCard.innerHTML = pokemonInfo;
-        allPokemonCont.appendChild(pokeCard);
+function upperCase(data){
+    const letter = data.name[0].toUpperCase() + data.name.slice(1)
+    return letter
+ }
 
+ function typeColors(data,cards){
     //Colors of the cards 
-     if(data.types[0].type.name === "fire"){
-        pokeCard.classList.add("fire")
+    if(data.types[0].type.name === "fire"){
+        cards.classList.add("fire")
      }
      
      if(data.types[0].type.name === "grass"){
-         pokeCard.classList.add("grass")
+         cards.classList.add("grass")
      }
      
      if(data.types[0].type.name === "bug" ){
-        pokeCard.classList.add("bug")
+        cards.classList.add("bug")
     }
 
      if(data.types[0].type.name === "water"){
-         pokeCard.classList.add("water")
+         cards.classList.add("water")
      }
 
      if(data.types[0].type.name === "normal"){
-        pokeCard.classList.add("normal")
+        cards.classList.add("normal")
     }
 
     if(data.types[0].type.name === "ground"){
-        pokeCard.classList.add("ground")
+        cards.classList.add("ground")
     }
 
     if(data.types[0].type.name === "electric"){
-        pokeCard.classList.add("electric")
+        cards.classList.add("electric")
     }
 
     if(data.types[0].type.name === "psychic"){
-        pokeCard.classList.add("psychic")
+        cards.classList.add("psychic")
     }
 
     if(data.types[0].type.name === "poison"){
-        pokeCard.classList.add("poison")
+        cards.classList.add("poison")
     }
 
     if(data.types[0].type.name === "dark"){
-        pokeCard.classList.add("dark")
+        cards.classList.add("dark")
     }
 
     if(data.types[0].type.name === "dragon"){
-        pokeCard.classList.add("dragon")
+        cards.classList.add("dragon")
     }
 
     if(data.types[0].type.name === "ice"){
-        pokeCard.classList.add("ice")
+        cards.classList.add("ice")
     }
 
     if(data.types[0].type.name === "ghost"){
-        pokeCard.classList.add("ghost")
+        cards.classList.add("ghost")
     }
 
     if(data.types[0].type.name === "fighting"){
-        pokeCard.classList.add("fighting");
+        cards.classList.add("fighting");
     }
 
     if(data.types[0].type.name === "steel"){
-        pokeCard.classList.add("steel");
+        cards.classList.add("steel");
     }
 
     if(data.types[0].type.name === "fairy"){
-        pokeCard.classList.add("fairy");
+        cards.classList.add("fairy");
     }
 
     if(data.types[0].type.name === "rock"){
-        pokeCard.classList.add("rock");
+        cards.classList.add("rock");
     }
 
     if(data.types[0].type.name === "flying"){
-        pokeCard.classList.add("flying");
+        cards.classList.add("flying");
     }
+}
+
+async function pushingToTeam(id){ 
+    const dataFetch = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
+    const data = await dataFetch.json();
+    let pokeArray = []
+    
+}
+
+ function createHtml(data,container,pokeCard){
+    const pokemonInfo = `
+    <div class="img-cont">
+        <img src="${data.sprites.front_default}">
+    </div>
+    <div class="info-cont">
+        <div class="name">
+            <div class="number">${data.id}.</div>
+                <h2>${upperCase(data)}</h2>
+        </div>
+        <div class="types">Type: ${data.types.map((type) => upperCase(type.type))}</div>
+        <div class="add-team-btn" onclick="pushingToTeam(${data.id})">Add to team</div>
+    </div>
+    ` 
+     pokeCard = document.createElement("div");
+        pokeCard.classList.add("poke-card")
+        pokeCard.innerHTML = pokemonInfo;
+        container.appendChild(pokeCard);
+        
+        typeColors(data,pokeCard)
 
 }
 
@@ -100,7 +124,7 @@ function createHtml(data){
      result = input.value;
      const dataFetch = await fetch(`https://pokeapi.co/api/v2/pokemon/${result}`)
      const data = await dataFetch.json();    
-     createHtml(data);
+     createHtml(data,allPokemonCont);
  }
 
  function clear(){
@@ -117,7 +141,7 @@ function createHtml(data){
 
     await Promise.all(promises).then(datas =>{
          datas.map(data =>{
-            createHtml(data);
+            createHtml(data, allPokemonCont);
         });
     })
     loading.classList.remove("load");

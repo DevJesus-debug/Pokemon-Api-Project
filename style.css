@@ -102,109 +102,128 @@ form{
 
 .all-pokemon-cont{
     display: grid;
-    grid-template-columns: repeat(6,220px);
+    grid-template-columns:repeat(auto-fit , minmax(250px, 300px)) ;
     place-content: center;
-    gap: 35px;
+    gap: 90px;
     width: 100%;
-    padding: 20px;
+    padding: 30px;
 }
 
-.all-pokemon-cont .poke-card{
-   display: flex;
-   height: 320px;
-   width: 220px;
-   flex-direction: column;
-   align-items: center;
-   text-align: center;
-   border: solid 1px rgba(144, 144, 144, 0.383);
-   border-radius: 5px;
-   padding: 10px;
-   -webkit-box-shadow: 1px 1px 3px 0px #000000; 
-   box-shadow: 1px 1px 3px 0px #000000;
-}
 
 
 /*CARD colors by pokemon typing*/
 
-.all-pokemon-cont .poke-card.fire{ 
+ .poke-card.fire{ 
     background-color:rgba(251, 51, 51, 0.88);
 }
 
-.all-pokemon-cont .poke-card.grass{ 
+ .poke-card.grass{ 
     background-color:rgba(50, 188, 59, 0.754);
 }
 
-.all-pokemon-cont .poke-card.bug{ 
+ .poke-card.bug{ 
     background-color:rgba(117, 253, 126, 0.356);
 }
 
 
-.all-pokemon-cont .poke-card.water{ 
+ .poke-card.water{ 
     background-color:rgba(58, 178, 233, 0.88);
 }
 
-.all-pokemon-cont .poke-card.normal{ 
-    background-color:rgba(239, 239, 240, 0.88);
+ .poke-card.normal{ 
+    background-color:rgba(210, 210, 220, 0.886);
 }
 
-.all-pokemon-cont .poke-card.ground{ 
+ .poke-card.ground{ 
     background-color:rgba(203, 151, 86, 0.84);
 }
 
-.all-pokemon-cont .poke-card.electric{ 
+ .poke-card.electric{ 
     background-color:rgba(255, 211, 67, 0.909);
 }
 
-.all-pokemon-cont .poke-card.psychic{ 
+ .poke-card.psychic{ 
     background-color:rgba(220, 37, 183, 0.782);
 }
 
-.all-pokemon-cont .poke-card.poison{ 
+ .poke-card.poison{ 
     background-color:rgba(168, 27, 233, 0.782);
 }
 
 
-.all-pokemon-cont .poke-card.dark{ 
+ .poke-card.dark{ 
     background-color:rgba(84, 81, 86, 0.782);
 }
 
-.all-pokemon-cont .poke-card.dragon{ 
+ .poke-card.dragon{ 
     background-color:rgba(72, 180, 201, 0.603);
 }
 
-.all-pokemon-cont .poke-card.ice{ 
+ .poke-card.ice{ 
     background-color:rgba(151, 236, 253, 0.786);
 }
 
-.all-pokemon-cont .poke-card.ghost{ 
+ .poke-card.ghost{ 
     background-color:rgba(67, 77, 170, 0.786);
 }
 
-.all-pokemon-cont .poke-card.fighting{ 
+ .poke-card.fighting{ 
     background-color:rgba(247, 104, 42, 0.964);
 }
 
-.all-pokemon-cont .poke-card.steel{ 
+ .poke-card.steel{ 
     background-color:rgba(42, 247, 199, 0.633);
 }
 
-.all-pokemon-cont .poke-card.fairy{ 
+ .poke-card.fairy{ 
     background-color:rgba(219, 34, 132, 0.633);
 }
 
-.all-pokemon-cont .poke-card.rock{ 
+ .poke-card.rock{ 
     background-color:rgba(161, 85, 26, 0.633);
 }
 
-.all-pokemon-cont .poke-card.flying{ 
+ .poke-card.flying{ 
     background-color:rgba(35, 108, 126, 0.72);
 }
 
 /*Cards style*/
 
+ .poke-card{
+    display: flex;
+    width: 100%;
+    height: 400px;
+    margin: 0 auto;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border: solid 1px rgba(144, 144, 144, 0.383);
+    border-radius: 5px;
+    padding: 10px;
+    -webkit-box-shadow: 1px 1px 3px 0px #000000; 
+    box-shadow: 1px 1px 3px 0px #000000;
+ }
+ 
+.img-cont{
+    background-color: white;
+    border:solid 1px black;
+    border-radius: 50%;
+    margin-top:-50px;
+    -webkit-box-shadow: 1px 1px 3px 0px #000000; 
+box-shadow: 1px 1px 3px 0px #000000;
+}
+
 .poke-card img{
     width: 150px;
 
+}
+
+.poke-card .info-cont{
+    width: 100%;
+    height: 80%;
+    margin-top: 20px;
+    border-radius: 5px;
+    background-color: rgba(249, 248, 248, 0.814);
 }
 
 .poke-card .name{
@@ -216,7 +235,7 @@ form{
 .poke-card .name h2{
     font-size: 20px;
     font-family: sans-serif;
-    font-weight: 400;
+    font-weight: 700;
 }
 
 .poke-card .name .number{
@@ -224,8 +243,44 @@ form{
     font-size: 18px;
     font-weight: 600;
     padding-top: 1px;
-    margin-right: 3px;
+    margin: 1px 10px 0px 20px;
 }
+
+.poke-card .types{
+   margin-top: 40px;
+   margin-bottom: 50px;
+   font-family: sans-serif;
+   font-weight: 600;
+}
+
+.add-team-btn{
+    border: solid 2px black;
+    width: 50%;
+    margin: 0 auto;
+    background: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: 700;
+    font-family: sans-serif;
+    cursor: pointer;
+}
+
+.add-team-btn:hover{
+   transition: all ease-in 100ms;
+   background-color: rgba(173, 168, 168, 0);
+   color: white;
+   text-shadow: 1px 0px 3px #000000;
+}
+
+.my-team-cont{
+    display: grid;
+    gap: 90px;
+    width: 100%;
+    place-content: center;
+    padding: 30px;
+    grid-template-columns:repeat(auto-fit , minmax(250px, 300px)) ;
+}
+
 
 /*Loading Container Styles*/
 
@@ -287,3 +342,4 @@ form{
         opacity: 1;
     }
 }
+
