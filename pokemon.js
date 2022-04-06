@@ -103,13 +103,11 @@ async function pushingToTeam(id){
         createHtml(data,myTeamCont)
         const children = myTeamCont.children
         const removeBtn = document.createElement("div");
-        const html =`<button class="remove-btn" onclick="removingTeam(${data.id})">X</button>`
+        const html =`<button class="remove-btn" onclick="removingTeam(${data.id},event,this)">X</button>`
         removeBtn.innerHTML = html
-       
 
         Array.from(children).forEach(child=>{
             child.appendChild(removeBtn)
-            
         })
 
     }else{
@@ -119,10 +117,19 @@ async function pushingToTeam(id){
 }
 
 
-async function removingTeam(id){
+async function removingTeam(id,e,el){
     const dataFetch = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
     const data = await dataFetch.json();
-    const children = myTeamCont.children
+    let parentElement =el.parentElement.parentElement;
+    e = e || window.event
+    if( e.target === el){
+        myTeamCont.removeChild(parentElement)
+        //we be the dom element 
+    }
+        // e = e || window.event
+        // console.log(e); //will be the event
+        // console.log(el.parentElement.parentElement); 
+
   }
 
 
@@ -146,7 +153,6 @@ async function removingTeam(id){
         pokeCard.classList.add("poke-card")
         pokeCard.innerHTML = pokemonInfo;
         container.appendChild(pokeCard);
-        
         
 
         typeColors(data,pokeCard)
@@ -196,6 +202,8 @@ allPokemonBtn.addEventListener("click", (e)=>{
     getAllPokemons();
     clear();
 });
+
+
 
 
 
