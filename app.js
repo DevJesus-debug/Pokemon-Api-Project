@@ -13,6 +13,7 @@ const myTeamPage = document.querySelector(".my-team-page");
 
 
 let pokemonList = 899;
+let pokeArray = [];
 
 function upperCase(data){
     const letter = data.name[0].toUpperCase() + data.name.slice(1)
@@ -115,7 +116,6 @@ async function pushingToTeam(id){
     }else{
         false
     }
-
 }
 
 
