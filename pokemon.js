@@ -94,11 +94,12 @@ function createHtml(data,container,pokeCard){
         pokeCard.classList.add("poke-card")
         pokeCard.innerHTML = pokemonInfo;
         container.appendChild(pokeCard);
-        
+        console.log(typeof data)
 
         typeColors(data,pokeCard)
 
 }
+
 
 
 async function pushingToTeam(id){ 
@@ -108,6 +109,7 @@ async function pushingToTeam(id){
     if(myTeamCont.children.length < 6){
         createHtml(data,myTeamCont)
         const children = myTeamCont.children
+        
         const removeBtn = document.createElement("div");
         removeBtn.classList.add("remove-btn")
         const html =`<button onclick="removingTeam(${data.id},event,this)">x</button>`
@@ -115,12 +117,30 @@ async function pushingToTeam(id){
 
         Array.from(children).forEach(child=>{
             child.appendChild(removeBtn)
+            console.log(child)
         })
+
+        
 
     }else{
         false
     }
 
+}
+
+
+//Check and push to Local Storage
+
+function saveCardsToLocal(card){
+    let cards;
+    if(localStorage.getItem("cards")=== null){
+        cards = [];
+    }else{
+        todos = JSON.parse(localStorage.getItem("cards"));
+    }
+
+    cards.push(card);
+    localStorage.setItem("cards",cards);
 }
 
 
@@ -223,7 +243,7 @@ function upperCase(data){
 
 
 
-
+console.log(localStorage)
 
  
  

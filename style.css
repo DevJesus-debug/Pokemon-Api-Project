@@ -112,6 +112,7 @@ form{
     gap: 90px;
     width: 100%;
     margin-top: 80px;
+    margin-bottom: 300px;
     padding: 0 50px;
 }
 
@@ -225,22 +226,33 @@ form{
 
 .team-cont-wraper{
     display: none;
+    margin-bottom: 300px;
 }
 
 .team-cont-wraper.show{
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 50px;
     width: 100%;
 }
 
+.team-cont-wraper .h1-img{
+    margin-top:120px ;
+}
 
 .my-team-cont{
     display: grid;
-    gap: 90px;
-    width: 100%;
+    gap: 50px;
+    row-gap: 100px;
+    width: 60%;
+    border-radius: 10px;
+    border: dashed 4px rgb(244, 239, 239);
+    background-color: rgba(0, 0, 0, 0.728);
     place-content: center;
-    padding: 30px;
+    padding: 80px 10px;
     grid-template-columns:repeat(auto-fit , minmax(250px, 300px)) ;
-    margin-bottom: 40px;
+    margin-top:100px;
 }
 
 /*CARD colors by pokemon typing*/
@@ -384,5 +396,4 @@ form{
 footer {
     height: 20vh;
     background-color: #000000;
-    margin-top: 445px;
 }
