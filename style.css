@@ -59,6 +59,7 @@ nav ul li {
     justify-content: center;
     margin-top: 100px;
     margin-bottom: 50px;
+    position: relative;
 }
 
 .input{
@@ -84,6 +85,25 @@ nav ul li {
     border-bottom: 1px solid black;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
+}
+
+.clear-btn{
+    display: none;
+}
+
+.clear-btn.clear-appear{
+   display: block;
+   border: none;
+   background-color: rgb(222, 58, 58); 
+   color: white;
+   padding: 10px 30px;
+   background:rgb(230, 69, 69);
+   color: white;
+   border: 0;
+   border-radius: 5px;
+   margin-left: 760px;
+   position: absolute;
+   border-bottom: solid 1px black;
 }
 
 .card-container{
@@ -114,7 +134,9 @@ form{
     margin-top: 80px;
     margin-bottom: 300px;
     padding: 0 50px;
+    position: relative;
 }
+
 
 /*Cards style*/
 
@@ -396,4 +418,200 @@ form{
 footer {
     height: 20vh;
     background-color: #000000;
+}
+
+@media  screen and (max-width: 995px) {
+   
+    .container h1 img{
+        width: 600px;
+    }
+
+    .input{
+        width: 200px;
+    }
+
+    .clear-btn.clear-appear{
+        margin-left: 530px;
+        position: absolute;
+     }
+}
+
+@media  screen and (max-width: 630px) {
+   header{
+    display: flex;
+    justify-content: center;
+   }
+
+    nav ul li{
+        margin:0;
+        padding: 20px;
+    }
+
+    .container h1 img{
+        width: 330px;
+    }
+
+    .input-cont{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 50px;
+        margin-bottom: 30px;
+    }
+
+    .input{
+        width: 200px;
+        margin-bottom: 30px;
+    }
+
+    .search{
+        padding: 30px 57px;
+        background:rgb(230, 69, 69);
+        color: white;
+        border: 0;
+        border-bottom: none;
+        border-top-right-radius: 80px;
+        border-top-left-radius: 80px;
+        border-bottom: solid 2px black;
+    }
+
+    .all-pokemon-cont{
+        display: grid;
+        grid-template-columns:repeat(auto-fit , minmax(100px, 170px));
+        justify-content: center;
+        gap: 15px;
+        row-gap: 80px;
+        width: 100%;
+        margin-top: 80px;
+        margin-bottom: 30px;
+        padding: 0 10px;
+        position: relative;
+    }
+
+    /*Card styles*/
+
+    .poke-card{
+       height: 235px;
+
+     }
+
+     .img-cont{
+        background-color: white;
+        border:solid 1px black;
+        border-radius: 50%;
+        margin-top:-50px;
+        
+    }
+    
+    .poke-card img{
+        width: 80px;
+    
+    }
+
+    .add-team-btn{
+        width: 80%;
+        margin: 0 auto;
+        padding: 4px 5px;
+        font-weight: 500;
+        font-size: 12px;
+    }
+
+    .poke-card .name h2{
+        font-size: 16px;
+        font-family: sans-serif;
+        font-weight: 600;
+    }
+
+    .poke-card .name {
+       margin-top: 17px;
+    }
+
+    .poke-card .types{
+        margin-bottom: 40px;
+        margin-top: 5px;
+        font-size: 14px;
+     }
+
+     /*input styles*/
+
+    .all-pokemon-btn{
+        padding: 30px 40px;
+        padding: none;
+        border: none;
+        border-bottom: none;
+        border-top-right-radius: none;
+        border-bottom-right-radius: 80px;
+        border-bottom-left-radius: 80px;
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        border-top: solid 2px black;
+    }
+
+
+    .clear-btn.clear-appear{
+        margin-bottom: 50px;
+        margin-left: 0;
+        background-color: white;
+        border: solid 2px black;
+        color: black;
+        padding: 18px 10px;
+        border-radius: 70px;
+        font-size: 14px;
+        top: 117px;
+        font-weight: 700;
+        animation: fadein ease-in-out .3s;
+    }
+
+    /*My team styles*/
+
+    .my-team-cont{
+        padding: 70px 5px;
+        width: 90%;
+        grid-template-columns:repeat(auto-fit , minmax(100px, 150px));
+        gap: 15px;
+        row-gap:90px;
+
+    }
+
+    .team-cont-wraper.show{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0 ;
+        margin-bottom: 200px;
+        width: 100%;
+    }
+
+    @keyframes fadein {
+        from{
+            opacity: 0;
+        }
+
+        to{
+            opacity: 1;
+        }
+        
+    }
+
+    .loading-icon.load{
+        margin-top: 0;
+    }
+
+    .loading-icon .pikachu-icon{
+        width:90px;
+        margin-left: 30px;
+    }
+
+    .loading-icon .pokeball-icon{
+        width: 15px;
+        margin-bottom: 10px;
+        margin-left: 10px;
+    }
+    
+    /*My team styles*/
+    .team-cont-wraper .h1-img{
+        margin-top:80px;
+        width: 200px;
+
+    }
 }

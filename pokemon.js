@@ -11,19 +11,28 @@ const addTeamBtn = document.querySelector(".add-team-btn");
 const myTeamPageBtn = document.querySelector(".my-team-page");
 const myTeamWrapper = document.querySelector(".team-cont-wraper");
 const homeBtn = document.querySelector(".home-page");
+const clearBtn = document.querySelector(".clear-btn");
 let pokemonList = 899;
 
 //Event Listeners
 
+clearBtn.addEventListener("click",(e)=>{
+    clear();
+    clearBtn.classList.remove("clear-appear")
+    e.preventDefault();
+})
+
 myTeamPageBtn.addEventListener("click",()=>{
     myTeamWrapper.classList.add("show")
     mainContainer.style.display ="none";
+    clearBtn.classList.remove("clear-appear")
     clear()
 })
 
 homeBtn.addEventListener("click",()=>{
     myTeamWrapper.classList.remove("show")
     mainContainer.style.display ="flex";
+    clearBtn.classList.remove("clear-appear")
     clear();
 })
 
@@ -31,6 +40,7 @@ homeBtn.addEventListener("click",()=>{
 search.addEventListener("click", (e)=>{
     e.preventDefault();
     searchPokemons()
+    clearBtn.classList.add("clear-appear")
     clear()
 });
 
@@ -41,25 +51,27 @@ allPokemonBtn.addEventListener("click", (e)=>{
     e.preventDefault();
     loading.classList.add("load");
     getAllPokemons();
+    clearBtn.classList.add("clear-appear")
     clear();
 });
+
+
+
+
+//FUNTIONS/////////////////////////////////////////
 
 function clear(){ 
     allPokemonCont.innerHTML= "";
     input.value = "";
 }
 
-
-
-//FUNTIONS/////////////////////////////////////////
-
-
-
+//Search Pokemone functionality
 async function searchPokemons(){ 
     result = input.value;
     const dataFetch = await fetch(`https://pokeapi.co/api/v2/pokemon/${result}`)
     const data = await dataFetch.json();    
     createHtml(data,allPokemonCont);
+    console.log(data)
 }
 
 async function getAllPokemons(){
@@ -70,12 +82,13 @@ async function getAllPokemons(){
 
     await Promise.all(promises).then(datas =>{
          datas.map(data =>{
-            createHtml(data, allPokemonCont);
+            createHtml( data , allPokemonCont);
         });
     })
     loading.classList.remove("load");
 }
 
+//Create The Html for the cards
 function createHtml(data,container,pokeCard){
     const pokemonInfo = `
     <div class="img-cont">
@@ -90,18 +103,18 @@ function createHtml(data,container,pokeCard){
         <div class="add-team-btn" onclick="pushingToTeam(${data.id})">Add to team</div>
     </div>
     ` 
-       pokeCard = document.createElement("div");
+        pokeCard = document.createElement("div");
         pokeCard.classList.add("poke-card")
         pokeCard.innerHTML = pokemonInfo;
         container.appendChild(pokeCard);
-        console.log(typeof data)
+        
 
         typeColors(data,pokeCard)
 
 }
 
 
-
+//Pushing Cards to Team
 async function pushingToTeam(id){ 
     const dataFetch = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
     const data = await dataFetch.json();
@@ -129,21 +142,8 @@ async function pushingToTeam(id){
 }
 
 
-//Check and push to Local Storage
 
-function saveCardsToLocal(card){
-    let cards;
-    if(localStorage.getItem("cards")=== null){
-        cards = [];
-    }else{
-        todos = JSON.parse(localStorage.getItem("cards"));
-    }
-
-    cards.push(card);
-    localStorage.setItem("cards",cards);
-}
-
-
+//Removing Cards from team 
 async function removingTeam(id,e,el){
     const dataFetch = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
     const data = await dataFetch.json();
@@ -165,7 +165,7 @@ function upperCase(data){
     return letter
  }
 
-
+//Adding the backgroundd colors to the cards 
  function typeColors(data,cards){
     //Colors of the cards 
     if(data.types[0].type.name === "fire"){
@@ -243,7 +243,7 @@ function upperCase(data){
 
 
 
-console.log(localStorage)
+
 
  
  

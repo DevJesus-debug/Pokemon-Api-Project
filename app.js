@@ -124,6 +124,21 @@ async function pushingToTeam(id){
 }
 
 
+//Check and push to Local Storage
+
+function saveCardsToLocal(card){
+    let cards;
+    if(localStorage.getItem("cards")=== null){
+        cards = [];
+    }else{
+        todos = JSON.parse(localStorage.getItem("cards"));
+    }
+
+    cards.push(card);
+    localStorage.setItem("cards",cards);
+}
+
+
 async function removingTeam(id,e,el){
     const dataFetch = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
     const data = await dataFetch.json();
